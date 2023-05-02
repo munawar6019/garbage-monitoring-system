@@ -1,0 +1,458 @@
+<div class="grid-container">
+    <h1 class="mat-h1">
+        <mat-icon>dashboard</mat-icon> Dashboard</h1>
+    <div class="row">
+        <div class="col-md-3" *ngIf="dataMembers?.role != 'Admin'">
+            <mat-card class=" card_color1">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="sectorFilledDustbins> 0"><b style="font-size: 70px;">{{sectorFilledDustbins}}</b></h1>
+                            <h1 *ngIf="sectorFilledDustbins == 0"><b>No Filled Dustbin</b></h1>
+
+                            <p *ngIf="sectorFilledDustbins > 0" style="font-size: small;"> Filled Dustbins of Sector</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">delete_outline</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="sectorFilledDustbins > 0">
+                        <a (click)="openFilledDustbins()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="sectorFilledDustbins == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Admin'">
+            <mat-card class=" card_color1">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="tFDustbins> 0"><b style="font-size: 70px;">{{tFDustbins}}</b></h1>
+                            <h1 *ngIf="tFDustbins == 0"><b>No Filled Dustbin</b></h1>
+
+                            <p *ngIf="tFDustbins > 0" style="font-size: small;">Total Filled Dustbins of System</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">delete_outline</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="tFDustbins > 0">
+                        <a (click)="openTotalFilledDustbins()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="tFDustbins == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Admin'">
+            <mat-card class=" card_color2">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="pendingMembers > 0"><b style="font-size: 70px;">{{pendingMembers}}</b></h1>
+                            <h1 *ngIf="pendingMembers == 0"><b>No Pending Member</b></h1>
+                            <p *ngIf="pendingMembers > 0" style="font-size: small;"> Pending Member</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">person_add</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="pendingMembers > 0">
+                        <a (click)="openUnregisteredMembers()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="pendingMembers == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Supervisor'">
+            <mat-card class=" card_color2">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="sectorPendingMembers > 0"><b style="font-size: 70px;">{{sectorPendingMembers}}</b></h1>
+                            <h1 *ngIf="sectorPendingMembers == 0"><b>No Pending Member</b></h1>
+                            <p *ngIf="sectorPendingMembers > 0" style="font-size: small;">Sector Pending Member</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">person_add</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="sectorPendingMembers > 0">
+                        <a (click)="openSectorPendingMember()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="sectorPendingMembers == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Supervisor'">
+            <mat-card class=" card_color3">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1><b style="font-size: 70px;">{{cleansingRate | number:'1.0-0'}}%</b></h1>
+                            <p style="font-size: small;"> Cleansing Rate</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">bar_chart</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions>
+                        <a (click)="openCleansingRate()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Admin'">
+            <mat-card class=" card_color3">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1><b style="font-size: 70px;">{{tCleansingRate | number:'1.0-0'}}%</b></h1>
+                            <p style="font-size: small;">Total Cleansing Rate</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">bar_chart</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions>
+                        <a (click)="openCleansingRate()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <!-- <div class="col-md-3" *ngIf="dataMembers?.role == 'Supervisor'">
+            <mat-card class=" card_color4">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1><b style="font-size: 70px;">{{sectorVehicles}}</b></h1>
+                            <p *ngIf="totalVehicles > 0" style="font-size: small;">Registered Vehicles</p>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">commute</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="totalVehicles > 0">
+                        <a (click)="openRegisteredVehicle()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="totalVehicles == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div> -->
+    
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Worker'">
+            <mat-card class=" card_color2">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="sectorMembers > 0"><b style="font-size: 70px;">{{sectorMembers}}</b></h1>
+                            <h1 *ngIf="sectorMembers == 0"><b>No Sector Member</b></h1>
+                            <p *ngIf="sectorMembers > 0" style="font-size: small;">Your Sector Members</p>
+
+                        </div>
+
+                        <div class="col-md-5">
+                            <mat-icon class="icons">supervisor_account</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="sectorMembers > 0">
+                        <a (click)="openSectorMember()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="sectorMembers == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Worker'">
+            <mat-card class=" card_color4">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <h1 *ngIf="yourCleanedDustbins > 0"><b style="font-size: 70px;">{{yourCleanedDustbins}}</b></h1>
+                            <h1 *ngIf="yourCleanedDustbins == 0"><b>No  Cleaned Dustbin</b></h1>
+                            <p *ngIf="yourCleanedDustbins > 0" style="font-size: small;">Your Cleaned Dustbins this Month</p>
+
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">delete_outline</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions *ngIf="yourCleanedDustbins > 0">
+                        <a (click)="openCleanedDustbins()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="yourCleanedDustbins == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngIf="dataMembers?.role == 'Worker'">
+            <mat-card class=" card_color3">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-7" style="text-align: center; margin-top: 20px;">
+                            <p style="font-size: small;"><b style="font-size: 30px;">Supervisor</b></p>
+                            <p style="font-size: small;"><b>Your Supervisor Details</b></p>
+
+                        </div>
+                        <div class="col-md-5">
+                            <mat-icon class="icons">how_to_reg</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-card-actions>
+                        <a (click)="openSuprevisorDetails()" mat-button style="width: 190px; margin-left: 30px;"> More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                    <mat-card-actions *ngIf="filledDustbins == 0">
+                        <a mat-button style="width: 190px; margin-left: 30px;"> No More Info<mat-icon>forward</mat-icon></a>
+                    </mat-card-actions>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-md-8">
+            <mat-card class="card_color5">
+                <mat-card-header>
+                    <mat-card-title><span class="smallText" style="color: white;">Dustbins Reports with Sector</span></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <app-google-map></app-google-map>
+                        </div>
+                        <div class="col-md-3">
+                            <a mat-button style="color: white;">
+                                <mat-icon class="icons " style="font-size: 40px;">bar_chart</mat-icon>
+                                <p *ngIf="newBins > 0">{{newBins}} New Bins</p>
+                                <p *ngIf="newBins == 0">No New Bins</p>
+
+                            </a>
+                            <a mat-button style="color: white;">
+                                <mat-icon class="icons " style="font-size: 40px;">bar_chart</mat-icon>
+                                <p *ngIf="newBins > 0">{{newSectors}} New Sectors</p>
+                                <p *ngIf="newBins == 0">No New Sectors</p>
+
+                            </a>
+                        
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-4">
+            <mat-card style="background-color: #00c0ef !important;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-icon class="icons " style="font-size: 40px; color: white;">supervisor_account</mat-icon>
+                    </div>
+                    <div class="col-md-9" style="color: white;">
+                        <p> Supervisors {{mySupervisors}}</p>
+                        <mat-progress-bar color="primry" mode="determinate" value="63"></mat-progress-bar>
+                        <br>
+                        <p>63% Increased in 10 Days</p>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card style="background-color: #00a65a !important;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-icon class="icons " style="font-size: 40px; color: white;">how_to_reg</mat-icon>
+                    </div>
+                    <div class="col-md-9" style="color: white;">
+                        <p>Workers {{myWorkers}}</p>
+                        <mat-progress-bar color="primry" mode="determinate" value="71"></mat-progress-bar>
+                        <br>
+                        <p>71% Increased in 10 Days</p>
+                    </div>
+                </div>
+            </mat-card>
+        
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <table mat-table [dataSource]="userData" class="mat-elevation-z8" matSort>
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="Username">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Username</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Email</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Sector">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sector }}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Phone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Phone</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+                </ng-container>
+                <ng-container matColumnDef="Joining_Date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Joining Date</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.createdAt}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Status</b></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-raised-button matTooltip="Click to Activate" (click)="changeStatus(element.id)" style="background-color:red; color: white;">{{ element.status }}</a>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="loading">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading Data
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        No Data
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':userData!=null}"></tr>
+                <tr mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(userData!=null && userData.data.length==0)}"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title><span class="smallText" style="color: white;">Dustbins Reports with Sector</span></mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <app-each-dustbin-garbage-levelreport></app-each-dustbin-garbage-levelreport>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-md-4">
+                    
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><b>Disabled Users</b> {{disabledUsers}}<b>/ {{totalMembers}}</b></p>
+                                <mat-progress-bar color="primry" mode="determinate" value="{{disabledUsers}}"></mat-progress-bar>
+                                <br>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <br>
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><b>Pending Queries</b> {{pendingQueries}}<b>/ {{totalQueries}}</b></p>
+                                <mat-progress-bar color="accent" mode="determinate" value="{{pendingQueries}}"></mat-progress-bar>
+                                <br>
+                            </div>
+                        </div>
+                    </mat-card>
+                   
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <p style="color: green;">
+                                    <mat-icon>arrow_drop_up</mat-icon>{{tCleansingRate | number:'1.0-0' }}%</p>
+                                <b><p>${{tCleanedDustbinsRate}}</p></b>
+                                <p> Total Dustbins Cleaned Cost</p>
+                                <br>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="col-md-3">
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <p style="color: orange;">
+                                    <mat-icon>arrow_drop_down</mat-icon>0%</p>
+                                <b><p>$10,909.9</p></b>
+                                <p> Total COST</p>
+                                <br>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            
+                <div class="col-md-3">
+                    <mat-card>
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <p style="color: orange;">
+                                    <mat-icon>arrow_drop_down</mat-icon>18%</p>
+                                <b><p>1200</p></b>
+                                <p>GOAL COMPLETIONS</p>
+                                <br>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+
+            <app-line-chart></app-line-chart>
+        </div>
+    </div>
+</div>

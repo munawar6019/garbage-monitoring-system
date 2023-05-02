@@ -1,0 +1,122 @@
+    .grid-container {
+        margin-top: 30px;
+    }
+    
+    .dashboard-card-content {
+        text-align: center;
+    }
+    
+    .AppMenu {
+        flex: 1 1 auto;
+    }
+    
+    .card_color1 {
+        background-color: #00c0ef !important;
+        max-width: 300px;
+        color: white;
+    }
+    
+    .card_color2 {
+        background-color: #00a65a !important;
+        max-width: 300px;
+        color: white;
+    }
+    
+    .card_color3 {
+        background-color: #f39c12 !important;
+        max-width: 300px;
+        color: white;
+    }
+    
+    .card_color4 {
+        background-color: #dd4b39 !important;
+        max-width: 300px;
+        color: white;
+    }
+    
+    .card_color5 {
+        background-color: #00a65a !important;
+    }
+    
+    .icons {
+        font-size: 60px;
+        margin-top: 8px;
+    }
+    
+    .smallText {
+        font-size: smaller;
+    }
+    
+    .pic_panel {
+        width: 150px;
+    }
+    
+    .main-footer {
+        background: #fff;
+        padding: 15px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+    }
+    /* For Table */
+    
+    .topMargin {
+        margin-top: 100px;
+    }
+    
+    table {
+        width: 100%;
+    }
+    
+    .mat-form-field {
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    button {
+        float: right;
+        margin-right: 20px;
+        color: white;
+        background-color: #1d890a;
+    }
+    
+    .rowMargin {
+        margin-top: 20px;
+    }
+    
+     ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+        opacity: 0.03 !important;
+        background-color: #1d890a !important;
+    }
+    
+     ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: #1d890a;
+    }
+    /* input color class */
+    
+     ::ng-deep input.mat-input-element {
+        color: #484a4c;
+    }
+    /* Change label color on focused */
+    
+     ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+        color: gray !important;
+    }
+    /* underline border color on focused */
+    
+     ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+        background-color: #1d890a !important;
+    }
+    
+    .delete {
+        color: red;
+    }
+    
+    .hide {
+        display: none;
+    }
+    
+    mat-footer-row mat-footer-cell {
+        justify-content: center;
+        font-style: italic;
+    }

@@ -1,0 +1,53 @@
+.sidenav-container {
+    height: 10%;
+}
+
+.sidenav {
+    width: 220px;
+}
+
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.tight {
+    padding-right: 16px;
+}
+
+.tight_sup {
+    padding-right: 16px;
+}
+
+.img_profile {
+    border-radius: 50%;
+    width: 50%;
+    height: 90%;
+}
+
+.img_profile1 {
+    border-radius: 100%;
+    width: 10%;
+    height: 10%;
+}
+
+.name {
+    font-size: small;
+}
+
+.pic_panel {
+    width: 190px;
+}
+
+.online {
+    width: 10px;
+}

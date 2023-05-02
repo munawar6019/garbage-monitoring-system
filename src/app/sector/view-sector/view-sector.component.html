@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 topMargin">
+            <h1>
+                <mat-icon>dashboard</mat-icon> Dashboard >
+                <mat-icon>library_books</mat-icon> View Sectors</h1>
+
+            <button matTooltip="Click to Add Sector" mat-raised-button routerLink="/addSector">
+        ADD Sector
+        <span class="material-icons">
+          add
+        </span>
+      </button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+            <table mat-table [dataSource]="userData" class="mat-elevation-z8" matSort>
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                        </mat-checkbox>
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="edit" mat-sort-header>
+                    <th mat-header-cell *matHeaderCellDef><b>Edit</b></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-flat-button matTooltip="Click to Edit" (click)="editStatus(element.id)">
+                            <span class="material-icons create">  create </span>
+                        </a>
+                    </td>
+                </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="sectorNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Number</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorNumber }}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="sectorEmail">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Email</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorEmail }}</td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="sectorContact">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Contact</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorContact }}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="sectorLabel">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Label</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorLabel }}</td>
+                </ng-container>
+                <ng-container matColumnDef="sectorDescription">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Description</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorDescription }}</td>
+                </ng-container>
+                <ng-container matColumnDef="sectorArea">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector Area</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorArea }}</td>
+                </ng-container>
+                <ng-container matColumnDef="sectorCity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector City</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sectorCity }}</td>
+                </ng-container>
+                <ng-container matColumnDef="delete" mat-sort-header>
+                    <th mat-header-cell *matHeaderCellDef><b>Delete</b></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-flat-button matTooltip="Click to Delete" (click)="deleteSector(element.id)">
+                            <span class="material-icons delete">  delete_forever </span>
+                        </a>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="loading">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading Data
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        No Data
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

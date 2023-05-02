@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding-left:3%; padding-top: 4%;">
+    <div class="row">
+        <div class="col-md-9">
+            <app-bar-chart></app-bar-chart>
+
+        </div>
+        <div class="col-md-3">
+            <mat-card style="background-color: #00c0ef !important;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-icon class="icons " style="font-size: 40px; color: white;">supervisor_account</mat-icon>
+                    </div>
+                    <div class="col-md-9" style="color: white;">
+                        <p> Supervisors 312</p>
+                        <mat-progress-bar color="primry" mode="determinate" value="63"></mat-progress-bar>
+                        <br>
+                        <p>63% Increased in 40 Days</p>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card style="background-color: #00a65a !important;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-icon class="icons " style="font-size: 40px; color: white;">how_to_reg</mat-icon>
+                    </div>
+                    <div class="col-md-9" style="color: white;">
+                        <p> Worker 117</p>
+                        <mat-progress-bar color="primry" mode="determinate" value="71"></mat-progress-bar>
+                        <br>
+                        <p>71% Increased in 10 Days</p>
+                    </div>
+                </div>
+            </mat-card>
+            <mat-card style="background-color: #f39c12 !important;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-icon class="icons " style="font-size: 40px; color: white;">commute</mat-icon>
+                    </div>
+                    <div class="col-md-9" style="color: white;">
+                        <p> Vehicles 312</p>
+                        <mat-progress-bar color="primry" mode="determinate" value="31"></mat-progress-bar>
+                        <br>
+                        <p>31% Increased in 40 Days</p>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <app-each-dustbin-garbage-levelreport></app-each-dustbin-garbage-levelreport>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <app-douhgnut-chart></app-douhgnut-chart>
+        </div>
+        <div class="col-md-6">
+            <app-pie-chart></app-pie-chart>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="container pageColor">
+    <div class="row">
+        <div class="col-md-12" style="margin-left: 30%">
+            <form class="example-form" [formGroup]="form">
+                <h1>
+                    <b>  <mat-icon>person_add</mat-icon>
+                         ADD WORKER</b></h1>
+
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Username</mat-label>
+                    <input matInput type="name" value="kjk" placeholder="Ex. Pizza" formControlName="username" required />
+                </mat-form-field>
+                <input type="hidden" name="status" formControlName="status" readonly />
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Telephone</mat-label>
+                    <span matPrefix>+92 &nbsp;</span>
+                    <input type="tel" matInput placeholder="320-2345098" formControlName="phone" required/>
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" placeholder="name@gmail.com" formControlName="email" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Role</mat-label>
+                    <input matInput type="text" placeholder="name@gmail.com" readonly formControlName="role" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Work Description</mat-label>
+                    <input matInput type="text" placeholder="" formControlName="workDescription" required />
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Select Sector</mat-label>
+                    <mat-select placeholder="Sector" name="sector" formControlName="sector" required>
+                        <mat-option *ngFor="let s of data" [(value)]="s.sectorArea">
+                            {{s.sectorArea}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Select Sector</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field hideRequiredMarker class="example-full-width">
+                    <input matInput placeholder="New password" [type]="hide ? 'password' : 'text'" formControlName="password" required />
+                    <mat-icon matSuffix (click)="hide = !hide">{{ hide ? "visibility_off" : "visibility" }}
+                    </mat-icon>
+                    <mat-error *ngIf="password.touched && password.invalid">
+                        <mat-error *ngIf="password.errors.required">
+                            Enter password
+                        </mat-error>
+                        <mat-error *ngIf="password.errors.pattern">
+                            Minimum 8 characters long
+                            <br /> Atleast one upercase, lower, digit and special character
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+
+                <br />
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Confirm password" [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" [errorStateMatcher]="matcher" />
+                    <mat-icon matSuffix (click)="hide = !hide">{{ hide ? "visibility_off" : "visibility" }}
+                    </mat-icon>
+                    <mat-error *ngIf="myForm.hasError('notSame')">
+                        Passwords do not match
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Created At</mat-label>
+                    <input matInput formControlName="createdAt" name="createdAt" [matDatepicker]="picker" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Updated At</mat-label>
+                    <input matInput formControlName="UpdatedAt" name="UpdatedAt" [matDatepicker]="picker1" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Last Signout</mat-label>
+                    <input matInput formControlName="lastSignout" name="lastSignout" [matDatepicker]="picker2" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+
+                <button mat-raised-button (click)="createSupervisor()">Save</button>
+                <button mat-raised-button (click)="createSupervisorAndContinue()">Save and Continue</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

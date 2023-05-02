@@ -1,0 +1,80 @@
+.pageColor {
+    background: url(../../assets/images/slider1.jpg);
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.avoid {
+    margin-top: 15px;
+    float: right;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.example-full-width {
+    width: 70%;
+    margin-top: 20px;
+}
+
+.signUp {
+    margin-left: 40%;
+    margin-top: 20px;
+    color: white;
+    background-color: #1d890a;
+}
+
+.signIn {
+    margin-top: 20px;
+}
+
+.box {
+    width: 500px;
+    height: 650px;
+    border: solid, gray;
+    border-width: 1px 1px;
+    padding-left: 20%;
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #1d890a !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #1d890a;
+}
+
+
+/* input color class */
+
+::ng-deep input.mat-input-element {
+    color: #484a4c;
+}
+
+
+/* Change label color on focused */
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: gray !important;
+}
+
+
+/* underline border color on focused */
+
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #1d890a !important;
+}
+
+.topPadding {
+    padding-top: 50px;
+}

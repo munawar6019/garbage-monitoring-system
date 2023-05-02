@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container pageColor">
+    <div class="row">
+        <div class="col-md-12" style="padding-left: 40%">
+            <form class="example-form" [formGroup]="form">
+                <h1>
+                    <b>
+                        <mat-icon>loupe</mat-icon>
+                    Edit Dustbin</b></h1>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Dustbin No.</mat-label>
+                    <input matInput type="number" min="1" max="1000" step="1" placeholder="31.4744" formControlName="dustbinNo" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Select Sector</mat-label>
+                    <mat-select placeholder="Sector" name="sector" formControlName="sector" required>
+                        <mat-option *ngFor="let s of data" [(value)]="s.sectorArea">
+                            {{s.sectorArea}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Select Sector</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Garbage Level</mat-label>
+                    <input matInput type="number" min="0" max="100" placeholder="31.4744" formControlName="garbageLevel" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Latitude</mat-label>
+                    <input matInput type="number" min="minLat" max="maxLat" step="0.002" value="31.4721" placeholder="31.4744" formControlName="dustbinLatitude" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Longitude</mat-label>
+                    <input matInput type="number" min="45" max="75" step="0.002" value="74.2485" placeholder="74.2582" formControlName="dustbinLongitude" required />
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Updated At</mat-label>
+                    <input matInput formControlName="updatedAt" name="updatedAt" [matDatepicker]="picker1" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button (click)="update()">
+                    <mat-icon>done_outline</mat-icon>
+                    Update</button>
+                <button mat-raised-button (click)="updateCancel()">
+                    <mat-icon>done_all</mat-icon>
+                    Cancel</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

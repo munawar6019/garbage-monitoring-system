@@ -1,0 +1,98 @@
+<button style=" float: right;" matTooltip="Close" (click)="onCloseDialog()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>close</mat-icon>
+  </button>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <span>{{this.supervisorName[0] | titlecase}}</span>
+    <span class="example-spacer"></span>
+    <button matTooltip="{{this.supervisorPhone[0]}}" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>call</mat-icon>
+    </button>
+    <button matTooltip="{{this.supervisorEmail[0]}}" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>attach_email</mat-icon>
+    </button>
+</mat-toolbar>
+<br>
+<mat-card style="margin-top: 1%;">
+    <mat-card-content>
+        <div class="row">
+            <span>
+                <mat-icon>call</mat-icon> Phone: 
+                {{this.supervisorPhone[0]}}
+            </span>
+        </div>
+        <div class="row">
+            <span>
+                <mat-icon>attach_email</mat-icon> Email: 
+                {{this.supervisorEmail[0]}}
+
+            </span>
+        </div>
+    </mat-card-content>
+</mat-card>
+<br>
+<mat-card style="margin-top: 1%;">
+    <mat-card-content>
+        <div class="row">
+            <div class="col-md-12">
+
+                <form class="example-form" [formGroup]="form">
+                    <h1>
+                        <b>  <mat-icon>contact_support</mat-icon>
+                             ADD QUERY</b></h1>
+
+                    <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                        <mat-label>Subject</mat-label>
+                        <input matInput type="name" value="kjk" placeholder="Ex. Pizza" formControlName="subject" required />
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                        <mat-label>FROM:</mat-label>
+                        <input matInput type="name" readonly value="kjk" placeholder="Ex. Pizza" formControlName="sentBy" required />
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                        <mat-label>TO:</mat-label>
+                        <input matInput type="name" readonly value="kjk" placeholder="Ex. Pizza" formControlName="sentTo" required />
+                    </mat-form-field>
+                    <br>
+                    <input type="hidden" name="status" formControlName="status" readonly />
+
+                    <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                        <mat-label>Description</mat-label>
+                        <input matInput type="text" value="kjk" placeholder="Ex. Pizza" formControlName="description" required />
+                        <textarea matInput placeholder="Comment">
+                    </textarea>
+                    </mat-form-field>
+                    <mat-form-field [hidden]="true">
+                        <mat-label>Created At</mat-label>
+                        <input matInput formControlName="createdAt" name="createdAt" [matDatepicker]="picker" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field [hidden]="true">
+                        <mat-label>Updated At</mat-label>
+                        <input matInput formControlName="UpdatedAt" name="UpdatedAt" [matDatepicker]="picker1" readonly>
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                    <button mat-raised-button (click)="createQuery()">Post</button>
+                </form>
+            </div>
+
+
+        </div>
+    </mat-card-content>
+
+</mat-card>
+<br>
+<mat-card style="margin-top: 1%;">
+    <mat-card-content>
+        <div class="row">
+            <span>
+                <mat-icon>schedule</mat-icon>
+                Has been the active member of this System Since {{this.supervisorCreatedAt[0]}}
+            </span>
+        </div>
+    </mat-card-content>
+</mat-card>

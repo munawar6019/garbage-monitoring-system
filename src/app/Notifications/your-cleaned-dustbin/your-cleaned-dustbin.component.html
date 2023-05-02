@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 topMargin">
+            <h1>
+                <mat-icon>dashboard</mat-icon> Dashboard >
+                <mat-icon>library_books</mat-icon> Cleaned Dustbins of This Month</h1>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+            <table mat-table [dataSource]="userData" class="mat-elevation-z8" matSort>
+                <!-- Position Column -->
+                <ng-container matColumnDef="dustbinNo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Dustbin No</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.dustbinNo }}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="sector">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.sector }}</td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="dustbinLatitude">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Latitude</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.dustbinLatitude }}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="dustbinLongitude">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Longitude</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.dustbinLongitude }}</td>
+                </ng-container>
+                <ng-container matColumnDef="garbageLevel">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Garbage Level</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.garbageLevel }}</td>
+                </ng-container>
+                <ng-container matColumnDef="cleanedBy">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Last Cleaned By</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.dustbinCleanedBy}}</td>
+                </ng-container>
+                <ng-container matColumnDef="lastCleanedDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Last Cleaned Date</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.cleanedAt}}</td>
+                </ng-container>
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Status</b></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-flat-button *ngIf="element.garbageLevel > 80" (click)="openCleanConfirmation(element.id)" matTooltip="Click to Mark it CLEAN" style="background-color:red; color: white;">Filled</a>
+                        <a mat-flat-button *ngIf="element.garbageLevel <=80" matTooltip="Click to Check Report" style="background-color:green; color: white;">Not Filled</a>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="loading">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading Data
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        No Data
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,14 @@
+.navbar {
+  background-color: white;
+  padding-top: 10px;
+  height: 70px;
+}
+.navbar-brand {
+  color: gray !important;
+  font-size: 22px;
+}
+.nav-link {
+  margin-left: 30px;
+  font-size: 18px;
+  color: gray !important;
+}

@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+<div class="container" style="padding-left: 1%;">
+    <div class="row">
+        <div class="col-md-12 topMargin">
+            <h1>
+                <mat-icon>dashboard</mat-icon> Dashboard >
+                <mat-icon>account_circle</mat-icon> YOUR PROFILE</h1>
+
+            <button matTooltip="Click to Edit Profile" (click)="editProfile()" mat-raised-button>
+        Edit Profile
+        <span class="material-icons">
+            person_add_disabled
+        </span>
+      </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card style="margin-top: 1%;">
+                <mat-card-content>
+                    <div class="row">
+                        <span>
+                            <mat-icon>live_help</mat-icon>
+                            <i>
+                            In case of any query please contact IT Support Team. Good Luck!
+                            </i>
+                        </span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <button style="margin-top: 1%;" matTooltip="Click to Change Passwowrd" (click)="changePassword()" mat-raised-button>
+                Change Passwowrd
+                <span class="material-icons">
+                  vpn_key
+                </span>
+              </button>
+            <mat-card style="margin-top: 5%;">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>dns</mat-icon> Full Name: <b><small>{{dataMembers?.username | titlecase}}</small></b>
+                                    </h2>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>attach_email</mat-icon> EMAIL : <b><small>{{dataMembers?.email | titlecase}}</small></b>
+                                    </h2>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>call</mat-icon> PHONE: <b><small>{{dataMembers?.phone | titlecase}}</small></b> 
+                                    </h2>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>room</mat-icon> SECTOR: <b><small>{{dataMembers?.sector | titlecase}}</small></b>
+                                    </h2>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>face</mat-icon> ROLE: <b><small>{{dataMembers?.role | titlecase}}</small></b>
+                                    </h2>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <span>
+                                    <h2>
+                                    <mat-icon>work</mat-icon> WORK DESCRIPITON: <b><small>{{dataMembers?.workDescription | titlecase}}</small></b>
+                                    </h2>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card style="margin-top: 1%;">
+                <mat-card-content>
+                    <div class="row">
+                        <span>
+                            <mat-icon>update</mat-icon>
+                            <i>
+                            Last Sign Out at <b><small>{{dataMembers?.lastSignout}}</small></b>
+                            </i>
+                        </span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

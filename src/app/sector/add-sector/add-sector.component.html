@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+<div class="container pageColor">
+    <div class="row">
+        <div class="col-md-12" style="margin-left: 30%">
+            <form class="example-form" [formGroup]="form">
+                <h1>
+                    <b>  <mat-icon>add_location</mat-icon>
+                         ADD Sector</b></h1>
+
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Number</mat-label>
+                    <input matInput type="number" placeholder="Ex. 48934" formControlName="sectorNumber" required />
+                </mat-form-field>
+                <input type="hidden" name="status" formControlName="status" readonly />
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Sector Contact</mat-label>
+                    <span matPrefix>+92 &nbsp;</span>
+                    <input type="tel" matInput placeholder="320-2345098" formControlName="sectorContact" required/>
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Official Email</mat-label>
+                    <input matInput type="email" placeholder="name@gmail.com" formControlName="sectorEmail" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Label</mat-label>
+                    <input matInput type="text" placeholder="name@gmail.com" formControlName="sectorLabel" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Description</mat-label>
+                    <textarea matInput type="text" placeholder="" formControlName="sectorDescription" required></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Area</mat-label>
+                    <textarea matInput type="text" placeholder="" formControlName="sectorArea" required></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Sector City</mat-label>
+                    <mat-select placeholder="Sector City" name="sectorCity" formControlName="sectorCity" required>
+                        <mat-option value="Lahore">Lahore</mat-option>
+                        <mat-option value="Islamabad">Islamabad</mat-option>
+                        <mat-option value="Karachi">Karachi</mat-option>
+                        <mat-option value="Faislabad">Faislabad</mat-option>
+                        <mat-option value="Gujranwala">Gujranwala</mat-option>
+                        <mat-option value="Sargodha">Sargodha</mat-option>
+                        <mat-option value="Peshawar">Peshawar</mat-option>
+                        <mat-option value="Quetta">Quetta</mat-option>
+                        <mat-option value="Sialkot">Sialkot</mat-option>
+                        <mat-option value="Sheikhupura">Sheikhupura</mat-option>
+
+                    </mat-select>
+                    <mat-hint align="end">Selcet Sector City</mat-hint>
+                </mat-form-field>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                            <mat-label>Sector Latitude</mat-label>
+                            <input matInput type="number" placeholder="34.1212" formControlName="sectorLat" required />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                            <mat-label>Sector Longitude</mat-label>
+                            <input matInput type="number" placeholder="76.1212" formControlName="sectorLng" required />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Sector Radius</mat-label>
+                    <input matInput type="number" placeholder="2200" formControlName="sectorRadius" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Background Color</mat-label>
+                    <input matInput type="color" placeholder="@red" formControlName="sectorBackground" required />
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Created At</mat-label>
+                    <input matInput formControlName="createdAt" name="createdAt" [matDatepicker]="picker" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field [hidden]="true">
+                    <mat-label>Updated At</mat-label>
+                    <input matInput formControlName="UpdatedAt" name="UpdatedAt" [matDatepicker]="picker1" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+
+                <button mat-raised-button (click)="createSector()">
+                        <mat-icon>done_outline</mat-icon>
+                            Save</button>
+                <button mat-raised-button (click)="createSectorAndContinue()">
+                    <mat-icon>done_all</mat-icon>
+                    Save and Continue</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>
