@@ -69,8 +69,15 @@ export class SignUpComponent implements OnInit{
        const currentYear = new Date().getFullYear();
     this.myForm = this.formBuilder.group(
       { 
-        username:[],
-        email:[],
+        username:[, [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern("^[a-zA-Z]+[a-zA-Z0-9]*$")
+        ]],
+        email:[, [
+          Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+        ]],
         status:["Disabled"],
         phone:[],
         role:[],
@@ -111,6 +118,7 @@ export class SignUpComponent implements OnInit{
   }
 
   CreateUser(){
+    if (this.myForm.valid) {
     let message='Submitted Successfuly';
     let action = 'You have been Added';
      console.log(this.myForm.value);
@@ -120,6 +128,13 @@ export class SignUpComponent implements OnInit{
      this._snackBar.open(message,action,{
       duration: 2000
     });
+  }else{
+    let message='Please fill the fields correctly ';
+    let action = '';
+    this._snackBar.open(message,action,{
+      duration: 2000
+    });
+  }
   }
 
   checkPasswords(group: FormGroup) {
