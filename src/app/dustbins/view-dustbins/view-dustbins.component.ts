@@ -33,6 +33,7 @@ export class ViewDustbinsComponent implements OnInit{
     ) {
    }
   ngOnInit() {
+    this.dustbinService.getRealtimeData();
     this.dustbinService.get().subscribe(actionArray =>{
       this.list  = actionArray.map(item =>{
         return {

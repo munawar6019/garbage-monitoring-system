@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import * as firebase from 'firebase'; 
 
 @Injectable({
@@ -9,7 +10,11 @@ import * as firebase from 'firebase';
 
 export class DustbinService {
   timeNow = new Date();
-  constructor(private firestore: AngularFirestore) { 
+  constructor(private firestore: AngularFirestore, private realtime_db: AngularFireDatabase) { 
+  }
+
+  getRealtimeData(){
+   return this.realtime_db.list('bin_logs').snapshotChanges();
   }
 
   create(data){
@@ -17,7 +22,6 @@ export class DustbinService {
   }
   createGarbageLog(data){
     this.firestore.collection('DustbinGarbageLog').add(data);
-  
   }  
   get(){
     return this.firestore.collection('Dustbins').snapshotChanges();         
@@ -51,7 +55,6 @@ export class DustbinService {
     return this.firestore.doc('DustbinGarbageLog/'+id).set(data);
   }
   getGarbageLog(s){
-    console.log(s);
     return this.firestore.collection('DustbinGarbageLog',
     ref=> ref.where('dustbinNo','==',s)).snapshotChanges();         
   }

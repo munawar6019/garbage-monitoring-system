@@ -21,12 +21,12 @@ export class GoogleMapComponent  {
     this.getSectors();
   }
  // google maps zoom level
- zoom: number = 13;
+ zoom: number = 17;
  // initial center position for the map
- lat: number = 31.4697;
- lng: number = 74.2728;
- lat1: number = 31.4282;
- lng1: number = 74.2678; 
+ lat: number = 33.7155486;
+ lng: number = 73.0287533;
+ lat1: number = 33.7155486;
+ lng1: number = 73.0287533;
  
  getDustbins(){
   this.mapService.getDustbins().subscribe( actionArray =>{

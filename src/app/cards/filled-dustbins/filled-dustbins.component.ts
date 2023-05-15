@@ -49,7 +49,6 @@ export class FilledDustbinsComponent implements OnInit{
         this.userService.getUserToEdit(user.uid).subscribe(data =>{
           this.dataMembers = data as User;
           this.cards.getFilledDustbins(this.dataMembers.sector).subscribe(actionArray =>{
-            console.log(actionArray.length);
             this.list  = actionArray.map(item =>{
               return {
                 id: item.payload.doc.id,

@@ -54,7 +54,7 @@ export class AddDustbinsComponent implements OnInit{
       const ID = params.get('id');    
         this.form.patchValue({      
            dustbinNo:'',
-        dustbinCleanedBy:'Undefined',
+          dustbinCleanedBy:'',
           dustbinLabel:'',
           sector:'',
           dustbinLatitude:'78',

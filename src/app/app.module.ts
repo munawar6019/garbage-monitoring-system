@@ -1,3 +1,4 @@
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { NotificationsService } from './Services/notifications.service';
 import { EditProfileComponent } from './workers/edit-profile/edit-profile.component';
 import { QueryService } from './Services/query.service';
@@ -198,6 +199,7 @@ import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.compo
       apiKey:'AIzaSyAqfDj0AUqDQsYNmM-NJ0adGe5MOcZ0Uc0'
     }),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     BrowserModule,
     AgmDirectionModule,
     FormsModule,

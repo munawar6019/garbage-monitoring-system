@@ -40,7 +40,6 @@ export class CleanedDustbinsComponent implements OnInit{
       if(user){
         this.dustbinService.getCleanedByDustbin(user.displayName).subscribe(actionArray =>{
           let totalMembers = actionArray.length;
-          console.log("Total Filled bins",totalMembers);
           this.list  = actionArray.map(item =>{
             return {
               id: item.payload.doc.id,
@@ -52,7 +51,6 @@ export class CleanedDustbinsComponent implements OnInit{
          this.userData.paginator = this.paginator;
         });
       }else{
-        console.log("User is not Signed In");
       } 
       });
      
