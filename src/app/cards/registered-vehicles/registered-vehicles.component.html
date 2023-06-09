@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 topMargin">
+            <h1>
+                <mat-icon>dashboard</mat-icon> DASHBOARD >
+                <mat-icon>library_books</mat-icon> VIEW VEHICLE</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <table mat-table [dataSource]="userData" class="mat-elevation-z8" matSort>
+                <!-- Position Column -->
+                <ng-container matColumnDef="vehicleNo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Vehicle No.</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.vehicleNo }}</td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="vehicleSector">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Sector</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.vehicleSector }}</td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="vehicleDriver">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Driver</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.vehicleDriver }}</td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="joiningDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Joining Date</b></th>
+                    <td mat-cell *matCellDef="let element">{{ element.createdAt}}</td>
+                </ng-container>
+                <ng-container matColumnDef="vehicleStatus">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Status</b></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-flat-button *ngIf="element.vehicleStatus=='NEW'" matTooltip="Click to view Reports" style="background-color:green; color: white;">{{ element.vehicleStatus }}</a>
+                        <a mat-flat-button *ngIf="element.vehicleStatus=='NotFunctioning'" matTooltip="Click to view Reports" style="background-color:red; color: white;">{{ element.vehicleStatus }}</a>
+                        <a mat-flat-button *ngIf="element.vehicleStatus=='OLD'" matTooltip="Click to view Reports" style="background-color:orange; color: white;">{{ element.vehicleStatus }}</a>
+
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="loading">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading Data
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="noData">
+
+                    <td mat-footer-cell *matFooterCellDef colspan="6">
+                        No Data
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

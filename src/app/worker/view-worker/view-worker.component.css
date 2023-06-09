@@ -1,0 +1,58 @@
+.topMargin {
+    margin-top: 100px;
+}
+
+button {
+    float: right;
+    margin-right: 20px;
+    color: white;
+    background-color: #1d890a;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.rowMargin {
+    margin-top: 20px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #1d890a !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #1d890a;
+}
+
+
+/* input color class */
+
+::ng-deep input.mat-input-element {
+    color: #484a4c;
+}
+
+
+/* Change label color on focused */
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: gray !important;
+}
+
+
+/* underline border color on focused */
+
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: #1d890a !important;
+}
+
+.delete {
+    color: red;
+}

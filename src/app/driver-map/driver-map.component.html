@@ -1,0 +1,27 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+
+    <agm-marker *ngFor="let d of dustbins; let i = index" [latitude]="d.dustbinLatitude" [longitude]="d.dustbinLongitude" [label]="d.dustbinLabel">
+
+        <agm-info-window style="color: green;">
+
+            <a mat-flat-button (click)="clickedMarker(d.dustbinNo,d.dustbinLatitude,d.dustbinLongitude)" *ngIf="d.garbageLevel >= 80 " style="color: red;">
+                <h1> {{d.garbageLevel}}%
+                </h1>
+            </a>
+            <a mat-flat-button (click)="clickedMarker(d.dustbinNo,d.dustbinLatitude,d.dustbinLongitude)" *ngIf="d.garbageLevel < 80 " style="color: green;">
+                <h1> {{d.garbageLevel}}%
+                </h1>
+            </a>
+
+
+        </agm-info-window>
+
+
+    </agm-marker>
+
+    <agm-circle *ngFor="let s of sectors; let i = index" [latitude]="s.sectorLat" [longitude]="s.sectorLng" [radius]="s.sectorRadius" [fillColor]="'green'" [editable]="true">
+    </agm-circle>
+
+    <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+
+</agm-map>

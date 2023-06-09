@@ -1,0 +1,158 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar>
+
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a mat-button class="pic_panel">
+                <img src="assets\images\munawar.jpg" class="img_profile">
+                <p>{{userData?.username | titlecase}}<br><img src="assets\images\iconfinder_user-online_87621.png" class="online"> online
+                </p>
+            </a>
+            <span><a routerLink="/homePage" class="pic_panel" mat-button><mat-icon>dashboard</mat-icon> Dashboard</a></span>
+            <br>
+            <span><a routerLink="/map" class="pic_panel" mat-button><mat-icon>explore</mat-icon> Map View</a></span>
+            <br>
+            <span><a routerLink="/driverMap" class="pic_panel" mat-button><mat-icon>explore</mat-icon> Map View</a></span>
+            <br>
+            <span><a routerLink="/report" class="pic_panel" mat-button><mat-icon>bar_chart</mat-icon> Report Analytics</a></span>
+            <br>
+            <span><a *ngIf="userData?.role == 'Worker'" routerLink="/report" class="pic_panel" mat-button><mat-icon>bar_chart</mat-icon> Sector Details</a></span>
+            <!-- <br> -->
+            <!-- <span><a *ngIf="userData?.role == 'Worker'" routerLink="/report" class="pic_panel" mat-button><mat-icon>bar_chart</mat-icon> Vehicle Details</a></span> -->
+            <br>
+            <span><a routerLink="/dustbinLog" class="pic_panel" mat-button><mat-icon>bar_chart</mat-icon> Dustbin Log</a></span>
+            <br>
+            <mat-accordion>
+                <mat-expansion-panel *ngIf="userData?.role != 'Worker'">
+                    <mat-expansion-panel-header class="tight">
+                        <mat-icon>delete_outline</mat-icon>
+                        <a> Manage Dustbins</a>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <a mat-button routerLink="/addDustbins">
+                            <mat-icon>loupe</mat-icon>
+                            Add Dustbin
+                        </a>
+                    </mat-action-row>
+                    <mat-action-row>
+                        <a mat-button routerLink="/viewDustbins">
+                            <mat-icon>library_books</mat-icon>
+                            View Dustbin
+                        </a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="userData?.role != 'Worker'">
+                    <mat-expansion-panel-header class="tight">
+                        <mat-icon>where_to_vote</mat-icon>
+                        <a> Manage Sectors</a>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <a mat-button routerLink="/addSector">
+                            <mat-icon>add_location</mat-icon>
+                            Add Sector
+                        </a>
+                    </mat-action-row>
+                    <mat-action-row>
+                        <a mat-button routerLink="/viewSector">
+                            <mat-icon>library_books</mat-icon>
+                            View Sector
+                        </a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="userData?.role != 'Worker'">
+                    <mat-expansion-panel-header class="tight">
+                        <mat-icon>supervisor_account</mat-icon>
+
+                        <a> Manage Supervisors</a>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <a mat-button routerLink="/addSupervisor">
+                            <mat-icon>person_add</mat-icon>
+                            Add Supervisors
+                        </a>
+                    </mat-action-row>
+                    <mat-action-row>
+                        <a mat-button routerLink="/viewSupervisor">
+                            <mat-icon>library_books</mat-icon>
+                            View Supervisors
+                        </a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="userData?.role != 'Worker'">
+                    <mat-expansion-panel-header class="tight">
+                        <mat-icon>how_to_reg</mat-icon>
+                        <a> Manage Workers</a>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <a mat-button routerLink="/addWorker">
+                            <mat-icon>person_add</mat-icon>
+                            Add Workers
+                        </a>
+                    </mat-action-row>
+                    <mat-action-row>
+                        <a mat-button routerLink="/viewWorker">
+                            <mat-icon>library_books</mat-icon>
+                            View Workers
+                        </a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar style="background:#3c8dbc; color:white; font-size: 20px;">
+            <a type="a" aria-label="Toggle sidenav" mat-icon-a (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </a>
+            <span><mat-icon>
+                delete_outline
+          </mat-icon> Garbage Monitoring System</span>
+            <div class="spacer"></div>
+            <a mat-button>
+                <mat-menu #notificationMenu="matMenu">
+                    <ng-template matMenuContent>
+                        <mat-action-list>
+                            <button (click)="filledDustbins(filledDustbinId[0])" *ngIf="filledDustbinsNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{filledDustbinsNumber}} {{filledDustbinsMessage[0]}} </button>
+                            <button (click)="pendingQueries(pendingQueryId[0])" *ngIf="pendingQueryNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{pendingQueryNumber}} {{pendingQueryMessage[0]}} </button>
+                            <button (click)="PendingWorkers(pendingWorkerId[0])" *ngIf="pendingWorkerNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{pendingWorkerNumber}} {{pendingWorkerMessage[0]}} </button>
+                            <button (click)="pendingSupervisors(pendingSupervisorId[0])" *ngIf="pendingSupervisorNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{pendingSupervisorNumber}} {{pendingSupervisorMessage[0]}} </button>
+                            <button (click)="malfunctionVehicles(malfunctionVehicleId[0])" *ngIf="malfunctionVehicleNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{malfunctionVehicleNumber}} {{malfunctionVehicleMessage[0]}} </button>
+                            <button (click)="sectorMembers(sectorMemberId[0])" *ngIf="sectorMemberNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{sectorMemberNumber}} {{sectorMemberMessage[0]}} </button>
+                            <button (click)="yourCleanedDustbins(yourCleanedDustbinId[0])" *ngIf="yourCleanedDustbinNumber > 0 && hide" mat-list-item> <mat-icon>where_to_vote</mat-icon> {{yourCleanedDustbinNumber}} {{yourCleanedDustbinMessage[0]}} </button>
+
+
+                        </mat-action-list>
+                    </ng-template>
+                </mat-menu>
+                <a mat-button [matMenuTriggerFor]="notificationMenu">
+                    <mat-icon matBadge="2" matBadgeColor="accent">notifications</mat-icon>
+                </a>
+            </a>
+            <a>|</a>
+            <a mat-button>
+                <mat-menu #appMenu="matMenu">
+                    <ng-template matMenuContent>
+                        <button matTooltip="Check your Profile" mat-button (click)="Profile()"> 
+                            <mat-icon>account_circle</mat-icon>
+                                Profile
+                         </button>
+                        <br>
+
+                        <button mat-button (click)="Signout()"> 
+                            <mat-icon>power_settings_new</mat-icon>
+                            Signout
+                        </button>
+
+                    </ng-template>
+                </mat-menu>
+                <a mat-button [matMenuTriggerFor]="appMenu">
+                    <img src="assets\images\munawar.jpg" class="img_profile1">
+                    <mat-icon>arrow_drop_down</mat-icon>
+                </a>
+            </a>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+    </mat-sidenav-content>
+</mat-sidenav-container>

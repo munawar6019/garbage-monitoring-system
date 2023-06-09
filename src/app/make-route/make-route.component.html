@@ -1,0 +1,13 @@
+<h1>
+    <mat-icon>create</mat-icon><b> CHOOSE DUSTBIN TO GET ROUTE</b>
+</h1>
+<mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Select Dustbin</mat-label>
+    <mat-select placeholder="Dustbin" name="dustbin" required>
+        <mat-option *ngFor="let s of dustbin" [(value)]="s.dustbinNo" [mat-dialog-close]="s.dustbinNo">
+            {{s.dustbinLabel}}
+        </mat-option>
+    </mat-select>
+    <mat-hint align="end">Select Sector</mat-hint>
+</mat-form-field>
+<br>

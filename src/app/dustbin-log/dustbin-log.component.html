@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container pageColor">
+    <div class="row">
+        <div class="col-md-12" style="padding-left: 30%">
+            <form class="example-form" [formGroup]="form">
+                <h1>
+                    <b>
+                        <mat-icon>loupe</mat-icon>
+                    Add Dustbin Log</b></h1>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Dustbin No.</mat-label>
+                    <input matInput type="number" placeholder="31.4744" formControlName="dustbinNo" required />
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker>
+                    <mat-label>Garbage Level</mat-label>
+                    <input matInput type="number" min="0" max="100" placeholder="31.4744" formControlName="garbageLevel" required />
+                </mat-form-field>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field [hidden]="true">
+                            <mat-label>Updated At</mat-label>
+                            <input matInput formControlName="UpdatedAt" name="UpdatedAt" [matDatepicker]="picker1" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-raised-button (click)="createAndContinue()">
+                    <mat-icon>done_all</mat-icon>
+                    Save and Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
